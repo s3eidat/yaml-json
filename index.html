@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>YAML ⇄ JSON — Free YAML to JSON and JSON to YAML Converter | S3eidat Tools</title>
+<meta name="description" content="Convert YAML to JSON and JSON to YAML live in your browser. Anchors, merge keys, multi-document YAML, exact error line and column, sort keys. Safe schema, no code tags. Free, private, nothing uploaded.">
+<meta property="og:title" content="YAML ⇄ JSON — free, private converter">
+<meta property="og:description" content="Two-way YAML and JSON conversion. Runs 100% in your browser.">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<script src="lib/js-yaml.min.js"></script>
+<!--s3:seo-->
+<link rel="canonical" href="https://s3eidat.github.io/yaml-json/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0f12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S3eidat Tools">
+<meta property="og:url" content="https://s3eidat.github.io/yaml-json/">
+<meta property="og:image" content="https://s3eidat.github.io/yaml-json/screenshot.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YAML ⇄ JSON — Convert YAML to JSON and back">
+<meta name="twitter:description" content="Convert YAML to JSON and back. Free, private and runs 100% in your browser: no sign-up, no uploads.">
+<meta name="twitter:image" content="https://s3eidat.github.io/yaml-json/screenshot.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "YAML ⇄ JSON", "url": "https://s3eidat.github.io/yaml-json/", "description": "Convert YAML to JSON and back. Free, private and runs 100% in your browser: no sign-up, no uploads.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "image": "https://s3eidat.github.io/yaml-json/screenshot.png", "author": {"@type": "Person", "name": "s3eidat", "url": "https://github.com/s3eidat"}}</script>
+<!--/s3:seo-->
+</head>
+<body data-tool="yaml-json">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>YAML ⇄ JSON</h1>
+    <p>Convert YAML to JSON and back as you type. Handy for Kubernetes manifests, Docker Compose and GitHub Actions files. Nothing leaves your browser.</p>
+  </section>
+
+  <section class="card stack">
+    <div class="row between">
+      <div class="row">
+        <div class="seg" id="dir" role="group" aria-label="Direction">
+          <button aria-pressed="true" data-v="y2j">YAML → JSON</button>
+          <button aria-pressed="false" data-v="j2y">JSON → YAML</button>
+        </div>
+        <button class="btn small" id="swap" title="Use the output as the new input"><svg class="i"><use href="#i-refresh"/></svg>Swap</button>
+      </div>
+      <div class="row">
+        <button class="btn ghost small" id="sample">Sample</button>
+        <label class="btn ghost small" id="open">Open file<input type="file" accept=".yaml,.yml,.json,application/json,text/yaml,text/plain" hidden></label>
+        <button class="btn ghost small" id="clear">Clear</button>
+      </div>
+    </div>
+
+    <div class="row yj-opts">
+      <label class="field">Indent
+        <select class="select" id="indent">
+          <option value="2">2 spaces</option>
+          <option value="4">4 spaces</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="sort"> Sort keys</label>
+      <label class="check j2y-only" hidden><input type="checkbox" id="multi"> Top-level array → multi-document YAML</label>
+      <label class="check y2j-only"><input type="checkbox" id="always"> Always output an array of documents</label>
+    </div>
+
+    <div class="grid-2 yj-io">
+      <label class="field"><span id="inLabel">YAML input</span>
+        <textarea class="textarea" id="input" dir="auto" spellcheck="false" placeholder="Paste YAML here, or drop a file"></textarea>
+      </label>
+      <div class="field">
+        <div class="row between"><span id="outLabel">JSON output</span>
+          <div class="row">
+            <button class="btn small" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy</button>
+            <button class="btn small" id="save"><svg class="i"><use href="#i-download"/></svg><span id="saveExt">.json</span></button>
+          </div>
+        </div>
+        <pre class="out yj-out" id="output" tabindex="0" aria-live="polite"></pre>
+      </div>
+    </div>
+    <div class="row"><span class="chip" id="status">Waiting for input</span><span class="faint" id="info"></span></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.yj-opts { align-items: flex-end; gap: 14px; }
+.yj-opts label.field { width: 150px; }
+.yj-opts .check { min-height: 40px; }
+.yj-io { align-items: start; }
+.yj-io .field > .row { min-height: 30px; }
+#inLabel { min-height: 30px; display: flex; align-items: center; }
+.yj-io div.field { display: grid; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--text-2); }
+#input, .yj-out { min-height: 420px; }
+.yj-out { margin: 0; max-height: 640px; overflow: auto; white-space: pre; word-break: normal; font-weight: 400; color: var(--text); }
+#input, .yj-out { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+.yj-err { background: var(--danger-soft); color: var(--danger); display: block; }
